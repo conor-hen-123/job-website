@@ -1,0 +1,54 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!--Page to remove a freelancer-->
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:body>
+        <!--Include the template-->
+        <ui:composition template="./templates/adminTemplate.xhtml">
+            <ui:define name="content">
+                <h1>List of Freelancers </h1>
+                <h3>
+                    <!--Table to display the information of each freelancer-->
+                    <h:dataTable value="#{freelanceProfileMBean.searchFreelancers()}" 
+                                 var="fl" border="1" cellpadding="10">
+
+                        <!--ID column of the freelancer-->
+                        <h:column>
+                            <f:facet name="header">ID</f:facet>
+                                #{fl.id}
+                        </h:column>
+                        <!--Name column of the freelancer-->
+                        <h:column>
+                            <f:facet name="header">Name</f:facet>
+                                #{fl.name}
+                        </h:column>
+                        <!--Username column of the freelancer-->
+                        <h:column>
+                            <f:facet name="header">Username</f:facet>
+                                #{fl.username}
+                        </h:column>
+                        <!--Skills column of the freelancer-->
+                        <h:column>
+                            <f:facet name="header">Skills</f:facet>
+                                #{fl.skills}
+                        </h:column>
+                        <h:column>
+                            <h:form>
+                                <!--button to remove the freelancer-->
+                                <h:commandButton action="#{freelanceProfileMBean.delete(fl)}" value="Remove"/>
+                            </h:form>
+                        </h:column>
+                    </h:dataTable>
+                </h3>
+                <br/><br/>
+                <h:form>
+                    <!--button to go back-->
+                    <h:commandButton action="admin_home" value="Back"/>
+                </h:form>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>

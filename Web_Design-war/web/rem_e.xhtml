@@ -1,0 +1,51 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!--Page to remove a provider-->
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:body>
+        <!--Include the template-->
+        <ui:composition template="./templates/adminTemplate.xhtml">
+            <ui:define name="content">
+                <h1>List of Providers </h1>
+                <h3>
+                    <!--Table to display the information of each provider-->
+                    <h:dataTable value="#{providerMBean.searchProviders()}" 
+                                 var="pr" border="1" cellpadding="10">
+
+                        <!--ID column of the provider-->
+                        <h:column>
+                            <f:facet name="header">ID</f:facet>
+                                #{pr.id}
+                        </h:column>
+                        <!--name column of the provider-->
+                        <h:column>
+                            <f:facet name="header">Name</f:facet>
+                                #{pr.name}
+                        </h:column>
+                        <!--Username column of the provider-->
+                        <h:column>
+                            <f:facet name="header">Username</f:facet>
+                                #{pr.username}
+                        </h:column>
+                        <h:column>
+                            <!--button to remove the provider-->
+                            <h:form>
+                                <h:commandButton action="#{providerMBean.delete(pr)}" value="Remove"/>
+                            </h:form>
+                        </h:column>
+                    </h:dataTable>
+                </h3>
+                <br/><br/>
+                <h:form>
+                    <!--button to go back-->
+                    <h:commandButton action="admin_home" value="Back"/>
+                </h:form>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>
+
+

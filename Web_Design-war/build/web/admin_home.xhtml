@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<!--This page is loaded when the admin logs in-->
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <body>
+        <!--Include the template-->
+        <ui:composition template="./templates/adminTemplate.xhtml">
+            <ui:define name="content">
+                <h:form>
+                    <h1>Welcome #{adminMBean.searchAdminName()}</h1>
+                    <hr/>
+                    <h:outputText value="Invalid userid or password"
+                                  rendered="#{not adminMBean.correct}"/>
+                    <h:panelGrid columns="2" border = "8"
+                                    cellpadding = "15" cellspacing = "10">
+                        <h:commandButton action="reg_fl" value="Register Freelancer"
+                                         rendered="#{adminMBean.correct}"/>
+                        <h:commandButton action="reg_e" value="Register Provider"
+                                         rendered="#{adminMBean.correct}"/>
+                        <h:commandButton action="rem_fl" value="Remove Freelancer"
+                                         rendered="#{adminMBean.correct}"/>
+                        <h:commandButton action="rem_e" value="Remove Provider"
+                                         rendered="#{adminMBean.correct}"/>
+                        <h:commandButton action="list_all_jobs" value="Show all jobs"
+                                         rendered="#{adminMBean.correct}"/>
+                        <h:commandButton action="admin_page" value="Try again"
+                                         rendered="#{not adminMBean.correct}"/>
+                        <h:commandButton action="index" value="Logout">
+                            <f:actionListener binding="#{adminMBean.logout()}" />
+                        </h:commandButton>
+                    </h:panelGrid>
+                </h:form>    
+            </ui:define>
+        </ui:composition>
+        <br/><br/>
+    </body>
+</html>

@@ -1,0 +1,13 @@
+<!--Left portion of all the templates which displays 4 buttons, one for home and other 3 for Admin,Freelancer and Provider login-->
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:form>
+        <ul class="left">
+            <li><h:commandButton value="Home" action="index"/></li><br />
+            <li><h:commandButton value="Admin Login" action="admin_page"/></li><br />
+            <li><h:commandButton value="Provider Login" action="employer_page"/></li><br />
+            <li><h:commandButton value="Freelancer Login" action="freelancer_page"/></li><br />
+        </ul>
+    </h:form>
+</ui:composition>
